@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Looker Studio Auto Cycle</title>
+    <meta charset="UTF-8" />
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="reportFrame" 
+      src="https://lookerstudio.google.com/embed/reporting/14eff462-e7ac-422a-b2fe-6ba95d840ee3/page/p_vb9rfglzqd"
+      allowfullscreen>
+    </iframe>
+
+    <script>
+      const pages = ['p_vb9rfglzqd', 'zfmCF'];
+
+      let currentPage = 0;
+
+      setInterval(() => {
+        currentPage = (currentPage + 1) % pages.length;
+        const newUrl = `https://lookerstudio.google.com/embed/reporting/14eff462-e7ac-422a-b2fe-6ba95d840ee3/page/${pages[currentPage]}`;
+        document.getElementById("reportFrame").src = newUrl;
+      }, 15000); // troca a cada 15 segundos
+    </script>
+  </body>
+</html>
